@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <center><h1>ADMIN DATA </h1></center>
+</head>
+<body>
+<h1>DETAILS</h1>
+<div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            User name
+                          </th>
+                          <th>
+                            Email
+                          </th>
+
+
+                          <th>
+                            Subject
+                          </th>
+                            <th>
+                              Message
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for d in data %}
+                        <tr>
+                          <td>{{d.Name}}</td>
+                            <td>{{d.Email}}</td>
+
+                            <td>{{d.Subject}}</td>
+                            <td>{{d.Message}}</td>
+
+                          <td>
+                                 <form action="{% url 'deletecontactdata' dataid=d.id %}">
+                                   <button type="submit" class="btn btn-danger">Delete</button>
+                                 </form>
+                            </td>
+
+
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+
+
+</body>
+</html>
+{% endblock %}

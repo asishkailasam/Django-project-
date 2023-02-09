@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Add products </h4>
+
+                  <form class="forms-sample" method="post" action="{% url 'pro_save' %}"  enctype="multipart/form-data" >
+                     {% csrf_token %}
+                      <div class="form-group from-default">
+                         <label>category</label>
+                          <select name="procat" class="form-control">
+                             {% for d in data %}
+                              <option>{{d.cname}}</option>
+                             {% endfor %}
+
+                          </select>
+                       <span class="form-bar"></span>
+                      </div>
+
+<!--                     <div class="form-group">-->
+<!--                      <label for="exampleInputName1">Product Catagory</label>-->
+<!--                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Catagory" name="procat">-->
+<!--                     </div>-->
+                      <div class="form-group">
+                        <label for="exampleInputName1">Product Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Name" name="name">
+                      </div>
+                      <div class="form-group">
+                          <label for="exampleInputName1">Product price </label>
+                          <input type="text" class="form-control" id="exampleInputName1" placeholder="Product price" name="price">
+                      </div>
+                      <div class="form-group">
+                          <label for="exampleInputName1">Quantity</label>
+                          <input type="text" class="form-control" id="exampleInputName1" placeholder="Quantity" name="quantity">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="exampleInputName1">information </label>
+                          <input type="text" class="form-control" id="exampleInputName1" placeholder="information" name="info">
+                      </div>
+                      <div>
+                          <input type="file"  name="image" >
+                      </div>
+                      <button type="submit" class="btn btn-primary me-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

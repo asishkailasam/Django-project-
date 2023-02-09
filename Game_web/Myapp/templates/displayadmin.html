@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <center><h1>ADMIN DATA </h1></center>
+</head>
+<body>
+<h1>DETAILS</h1>
+<div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            User Name
+                          </th>
+                          <th>
+                            Email
+                          </th>
+
+                          <th>
+                            Image
+                          </th>
+                          <th>
+                            password
+                          </th>
+                            <th>
+                            conform password
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for d in data %}
+                        <tr>
+                          <td>{{d.uname}}</td>
+                            <td>{{d.email}}</td>
+                            <td><img src="{{d.image.url}}"></td>
+                            <td>{{d.password}}</td>
+                            <td>{{d.cpassword}}</td>
+                            <td>
+                                 <form action="{% url 'edit_ad' dataid=d.id %} ">
+                                   <button type="submit" class="btn btn-success">Edit</button>
+                                 </form>
+                            </td>
+                          <td>
+                                 <form action="{% url 'deletedata' dataid=d.id %}">
+                                   <button type="submit" class="btn btn-danger">Delete</button>
+                                 </form>
+                            </td>
+
+
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+
+
+</body>
+</html>
+{% endblock %}

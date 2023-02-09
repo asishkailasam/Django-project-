@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            Product Category
+                          </th>
+                          <th>
+                            Product Name
+                          </th>
+                          <th>
+                            Price
+                          </th>
+                          <th>
+                            Quantity
+                          </th>
+                          <th>
+                            Information
+                          </th>
+                          <th>
+                            Image
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       {% for d in data %}
+                         <tr>
+                            <td>{{d.cname}}</td>
+                            <td>{{d.pname}}</td>
+                            <td>{{d.price}}</td>
+                            <td>{{d.quantity}}</td>
+                            <td>{{d.info}}</td>
+                            <td>
+                                <img src="{{d.image.url}}">
+                            </td>
+                             <td>
+                                 <form action="{% url 'delete_pro' dataid=d.id %} ">
+                                   <button type="submit" class="btn btn-danger">Delete</button>
+                                 </form>
+                            </td>
+                             <td>
+                                 <form action="{% url 'edit_pro' dataid=d.id %} ">
+                                     <button type="submit" class="btn btn-success">Edit</button>
+                                 </form>
+
+
+                             </td>
+                         </tr>
+                       {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+</body>
+</html>
+{% endblock %}
